@@ -240,7 +240,50 @@ footer {
 </footer>
 
 <script>
-function makeBooking() {
+async function makeBooking() {
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const service = document.getElementById("service").value;
+  const day = document.getElementById("day").value;
+  const time = document.getElementById("time").value;
+  const message = document.getElementById("message");
+
+  if (name === "" || phone === "") {
+    message.style.display = "block";
+    message.style.background = "#4a1c1c";
+    message.style.color = "#ffbaba";
+    message.innerText = "Te rugăm să completezi numele și numărul de telefon.";
+    return;
+  }
+
+  message.style.display = "block";
+  message.style.background = "#173d20";
+  message.style.color = "#b9f6c5";
+  message.innerText = "Se trimite programarea...";
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbyFP_-JIdRA5KxpNRMdW8_z4nfaQV9PHwC_jWWKKioehyEJp5Ap7zEjMdQEFrfSn28F/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        service: service,
+        day: day,
+        time: time
+      })
+    });
+
+    message.innerText = "Programarea a fost înregistrată!";
+  } catch (error) {
+    message.style.background = "#4a1c1c";
+    message.style.color = "#ffbaba";
+    message.innerText = "A apărut o eroare. Încearcă din nou.";
+  }
+} {
 
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
