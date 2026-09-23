@@ -1,0 +1,231 @@
+```html
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barber & Beauty</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: white;
+    }
+
+    header {
+      padding: 25px 20px;
+      text-align: center;
+      background: #111;
+      border-bottom: 1px solid #292929;
+    }
+
+    header h1 {
+      font-size: 30px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      color: #aaa;
+      margin-top: 8px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #aaa;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .service {
+      background: #171717;
+      border: 1px solid #292929;
+      border-radius: 15px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .booking {
+      background: #171717;
+      border: 1px solid #292929;
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .booking h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 7px;
+      color: #ccc;
+    }
+
+    select,
+    input,
+    button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: #0d0d0d;
+      color: white;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 22px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>BARBER & BEAUTY</h1>
+    <p>Stil. Precizie. Încredere.</p>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>Programează-te online</h2>
+      <p>Alege serviciul, ziua și ora care îți convin.</p>
+    </section>
+
+    <section class="services">
+
+      <div class="service">
+        <h3>💈 Tuns</h3>
+        <div class="price">450 MDL</div>
+      </div>
+
+      <div class="service">
+        <h3>🧔 Barbă</h3>
+        <div class="price">300 MDL</div>
+      </div>
+
+      <div class="service">
+        <h3>Tonare barbă</h3>
+        <div class="price">250 MDL</div>
+      </div>
+
+      <div class="service">
+        <h3>👁️ Sprâncene</h3>
+        <div class="price">200 MDL</div>
+      </div>
+
+    </section>
+
+    <section class="booking">
+
+      <h2>Fă o programare</h2>
+
+      <label>Serviciu</label>
+      <select>
+        <option>💈 Tuns — 450 MDL</option>
+        <option>🧔 Barbă — 300 MDL</option>
+        <option>Tonare barbă — 250 MDL</option>
+        <option>👁️ Sprâncene — 200 MDL</option>
+      </select>
+
+      <label>Ziua</label>
+      <select>
+        <option>Luni</option>
+        <option>Marți</option>
+        <option>Miercuri</option>
+        <option>Joi</option>
+        <option>Vineri</option>
+        <option>Sâmbătă</option>
+        <option>Duminică</option>
+      </select>
+
+      <label>Ora</label>
+      <select>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+      </select>
+
+      <label>Nume</label>
+      <input type="text" placeholder="Numele tău">
+
+      <label>Telefon</label>
+      <input type="tel" placeholder="Numărul de telefon">
+
+      <button>PROGRAMEAZĂ-TE</button>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Barber & Beauty
+  </footer>
+
+</body>
+</html>
+```
