@@ -1,70 +1,275 @@
-```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber & Beauty</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barber & Beauty</title>
 
-    body {
-      background: #0d0d0d;
-      color: white;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    header {
-      padding: 25px 20px;
-      text-align: center;
-      background: #111;
-      border-bottom: 1px solid #292929;
-    }
+body {
+  background: #0b0b0b;
+  color: white;
+}
 
-    header h1 {
-      font-size: 30px;
-      letter-spacing: 2px;
-    }
+header {
+  text-align: center;
+  padding: 35px 20px;
+  border-bottom: 1px solid #292929;
+}
 
-    header p {
-      color: #aaa;
-      margin-top: 8px;
-    }
+header h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 35px 20px;
-    }
+header p {
+  color: #999;
+  margin-top: 8px;
+}
 
-    .hero {
-      text-align: center;
-      margin-bottom: 35px;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 35px 20px;
+}
 
-    .hero h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+.hero {
+  text-align: center;
+  margin-bottom: 35px;
+}
 
-    .hero p {
-      color: #aaa;
-    }
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 35px;
-    }
+.hero p {
+  color: #aaa;
+}
 
-    .service {
-      background: #171717;
-      border: 1px solid #292929;
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.service {
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 16px;
+  padding: 25px 15px;
+  text-align: center;
+}
+
+.service h3 {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.booking {
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 18px;
+  padding: 25px;
+}
+
+.booking h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 15px 0 7px;
+  color: #ccc;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #0b0b0b;
+  color: white;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  border: 0;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ddd;
+}
+
+#message {
+  display: none;
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #173d20;
+  color: #b9f6c5;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>BARBER & BEAUTY</h1>
+  <p>Stil. Precizie. Încredere.</p>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h2>Programează-te online</h2>
+  <p>Alege serviciul, ziua și ora.</p>
+</section>
+
+<section class="services">
+
+  <div class="service">
+    <h3>💈 Tuns</h3>
+    <div class="price">450 MDL</div>
+  </div>
+
+  <div class="service">
+    <h3>🧔 Barbă</h3>
+    <div class="price">300 MDL</div>
+  </div>
+
+  <div class="service">
+    <h3>Tonare barbă</h3>
+    <div class="price">250 MDL</div>
+  </div>
+
+  <div class="service">
+    <h3>👁️ Sprâncene</h3>
+    <div class="price">200 MDL</div>
+  </div>
+
+</section>
+
+<section class="booking">
+
+<h2>Fă o programare</h2>
+
+<label>Serviciu</label>
+<select id="service">
+  <option value="Tuns — 450 MDL">💈 Tuns — 450 MDL</option>
+  <option value="Barbă — 300 MDL">🧔 Barbă — 300 MDL</option>
+  <option value="Tonare barbă — 250 MDL">Tonare barbă — 250 MDL</option>
+  <option value="Sprâncene — 200 MDL">👁️ Sprâncene — 200 MDL</option>
+</select>
+
+<label>Ziua</label>
+<select id="day">
+  <option>Luni</option>
+  <option>Marți</option>
+  <option>Miercuri</option>
+  <option>Joi</option>
+  <option>Vineri</option>
+  <option>Sâmbătă</option>
+  <option>Duminică</option>
+</select>
+
+<label>Ora</label>
+<select id="time">
+  <option>08:00</option>
+  <option>09:00</option>
+  <option>10:00</option>
+  <option>11:00</option>
+  <option>12:00</option>
+  <option>13:00</option>
+  <option>14:00</option>
+  <option>15:00</option>
+  <option>16:00</option>
+  <option>17:00</option>
+  <option>18:00</option>
+  <option>19:00</option>
+  <option>20:00</option>
+  <option>21:00</option>
+</select>
+
+<label>Nume</label>
+<input id="name" type="text" placeholder="Numele tău">
+
+<label>Telefon</label>
+<input id="phone" type="tel" placeholder="Numărul de telefon">
+
+<button onclick="makeBooking()">PROGRAMEAZĂ-TE</button>
+
+<div id="message"></div>
+
+</section>
+
+</main>
+
+<footer>
+© 2026 Barber & Beauty
+</footer>
+
+<script>
+function makeBooking() {
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const service = document.getElementById("service").value;
+  const day = document.getElementById("day").value;
+  const time = document.getElementById("time").value;
+  const message = document.getElementById("message");
+
+  if (name === "" || phone === "") {
+    message.style.display = "block";
+    message.style.background = "#4a1c1c";
+    message.style.color = "#ffbaba";
+    message.innerText = "Te rugăm să completezi numele și numărul de telefon.";
+    return;
+  }
+
+  message.style.display = "block";
+  message.style.background = "#173d20";
+  message.style.color = "#b9f6c5";
+
+  message.innerText =
+    "Programarea a fost înregistrată! " +
+    name + ", ai ales " + service +
+    ", " + day + " la ora " + time + ".";
+}
+</script>
+
+</body>
+</html>      border: 1px solid #292929;
       border-radius: 15px;
       padding: 22px;
       text-align: center;
