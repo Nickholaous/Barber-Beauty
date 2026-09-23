@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -57,7 +58,7 @@ header p {
 
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 15px;
   margin-bottom: 35px;
 }
@@ -136,12 +137,27 @@ button:disabled {
   padding: 15px;
   border-radius: 10px;
   text-align: center;
+  line-height: 1.5;
 }
 
 footer {
   text-align: center;
   padding: 30px;
   color: #777;
+}
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 27px;
+  }
+
+  .hero h2 {
+    font-size: 27px;
+  }
+
+  .booking {
+    padding: 20px;
+  }
 }
 </style>
 </head>
@@ -159,6 +175,9 @@ footer {
   <h2>Programează-te online</h2>
   <p>Alege serviciul, ziua și ora.</p>
 </section>
+
+
+<!-- SERVICII -->
 
 <section class="services">
 
@@ -182,24 +201,52 @@ footer {
     <div class="price">200 MDL</div>
   </div>
 
+  <div class="service">
+    <h3>👑 Complex</h3>
+    <div class="price">1000 MDL</div>
+  </div>
+
 </section>
+
+
+<!-- PROGRAMARE -->
 
 <section class="booking">
 
 <h2>Fă o programare</h2>
 
+
 <label for="service">Serviciu</label>
 
 <select id="service">
-  <option value="Tuns">💈 Tuns — 450 MDL</option>
-  <option value="Barbă">🧔 Barbă — 300 MDL</option>
-  <option value="Tonare barbă">🤟🏻 Tonare barbă — 250 MDL</option>
-  <option value="Sprâncene">👁️ Sprâncene — 200 MDL</option>
+
+  <option value="Tuns|450 MDL">
+    💈 Tuns — 450 MDL
+  </option>
+
+  <option value="Barbă|300 MDL">
+    🧔 Barbă — 300 MDL
+  </option>
+
+  <option value="Tonare barbă|250 MDL">
+    🤟🏻 Tonare barbă — 250 MDL
+  </option>
+
+  <option value="Sprâncene|200 MDL">
+    👁️ Sprâncene — 200 MDL
+  </option>
+
+  <option value="Complex|1000 MDL">
+    👑 Complex — 1000 MDL
+  </option>
+
 </select>
+
 
 <label for="day">Ziua</label>
 
 <select id="day">
+
   <option value="Luni">Luni</option>
   <option value="Marți">Marți</option>
   <option value="Miercuri">Miercuri</option>
@@ -207,11 +254,14 @@ footer {
   <option value="Vineri">Vineri</option>
   <option value="Sâmbătă">Sâmbătă</option>
   <option value="Duminică">Duminică</option>
+
 </select>
+
 
 <label for="time">Ora</label>
 
 <select id="time">
+
   <option value="08:00">08:00</option>
   <option value="09:00">09:00</option>
   <option value="10:00">10:00</option>
@@ -226,7 +276,9 @@ footer {
   <option value="19:00">19:00</option>
   <option value="20:00">20:00</option>
   <option value="21:00">21:00</option>
+
 </select>
+
 
 <label for="name">Nume</label>
 
@@ -234,7 +286,9 @@ footer {
   id="name"
   type="text"
   placeholder="Numele tău"
+  autocomplete="name"
 >
+
 
 <label for="phone">Telefon</label>
 
@@ -242,11 +296,14 @@ footer {
   id="phone"
   type="tel"
   placeholder="Numărul de telefon"
+  autocomplete="tel"
 >
+
 
 <button id="bookingButton" onclick="makeBooking()">
   PROGRAMEAZĂ-TE
 </button>
+
 
 <div id="message"></div>
 
@@ -254,22 +311,43 @@ footer {
 
 </main>
 
+
 <footer>
 © 2026 Barber & Beauty
 </footer>
 
+
 <script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbyFP_-JIdRA5KxpNRmdW8_z4nfaQV9PHwC_jWWKKioehyEJp5Ap7zEjMdQEFrfSn28F/exec";
+
 
 async function makeBooking() {
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const service = document.getElementById("service").value;
-  const day = document.getElementById("day").value;
-  const time = document.getElementById("time").value;
+  const name =
+    document.getElementById("name").value.trim();
 
-  const message = document.getElementById("message");
-  const button = document.getElementById("bookingButton");
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const serviceValue =
+    document.getElementById("service").value;
+
+  const day =
+    document.getElementById("day").value;
+
+  const time =
+    document.getElementById("time").value;
+
+  const message =
+    document.getElementById("message");
+
+  const button =
+    document.getElementById("bookingButton");
+
+
+  /* VERIFICARE NUME ȘI TELEFON */
 
   if (name === "" || phone === "") {
 
@@ -283,62 +361,118 @@ async function makeBooking() {
     return;
   }
 
+
+  /* SEPARĂM SERVICIUL DE PREȚ */
+
+  const serviceParts =
+    serviceValue.split("|");
+
+  const service =
+    serviceParts[0];
+
+  const price =
+    serviceParts[1];
+
+
+  /* DATELE CARE VOR AJUNGE ÎN GOOGLE SHEETS */
+
+  const bookingData = {
+
+    name: name,
+
+    phone: phone,
+
+    service: service,
+
+    price: price,
+
+    day: day,
+
+    time: time
+
+  };
+
+
   button.disabled = true;
   button.innerText = "SE TRIMITE...";
+
 
   message.style.display = "block";
   message.style.background = "#173d20";
   message.style.color = "#b9f6c5";
 
-  message.innerText = "Se trimite programarea...";
+  message.innerText =
+    "Se trimite programarea...";
+
 
   try {
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbyFP_-JIdRA5KxpNRmdW8_z4nfaQV9PHwC_jWWKKioehyEJp5Ap7zEjMdQEFrfSn28F/exec",
+      SCRIPT_URL,
       {
         method: "POST",
+
         mode: "no-cors",
+
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type":
+            "text/plain;charset=utf-8"
         },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          service: service,
-          day: day,
-          time: time
-        })
+
+        body: JSON.stringify(bookingData)
       }
     );
+
+
+    /*
+    PROGRAMAREA A FOST TRIMISĂ
+    */
 
     message.style.background = "#173d20";
     message.style.color = "#b9f6c5";
 
     message.innerText =
-      "Programarea a fost trimisă! " +
-      name + " — " +
-      service + ", " +
-      day + " la " +
-      time + ".";
+      "✅ Programarea a fost trimisă!\n\n" +
+      name +
+      " — " +
+      service +
+      " — " +
+      price +
+      "\n" +
+      day +
+      " la " +
+      time;
+
+
+    /*
+    CURĂȚĂM NUMELE ȘI TELEFONUL
+    */
 
     document.getElementById("name").value = "";
+
     document.getElementById("phone").value = "";
 
+
   } catch (error) {
+
+    console.error(error);
 
     message.style.background = "#4a1c1c";
     message.style.color = "#ffbaba";
 
     message.innerText =
-      "Nu s-a putut trimite programarea. Încearcă din nou.";
+      "❌ Nu s-a putut trimite programarea. Încearcă din nou.";
+
   }
+
 
   button.disabled = false;
   button.innerText = "PROGRAMEAZĂ-TE";
+
 }
 
 </script>
 
 </body>
 </html>
+```
